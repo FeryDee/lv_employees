@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-12">
-            <form action="{{ route('branch.update') }}" method="post">
+            <form action="{{ route('branch.update',$branch->id) }}" method="post">
                 @csrf
                 @method('put')
                 <div class="form-floating mb-3">

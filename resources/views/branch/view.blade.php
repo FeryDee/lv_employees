@@ -14,13 +14,10 @@
 
                 <h4>Branch Information</h4>
 
-                {{-- <div class="card-title">
-                    <h4>Branch Information</h4>
-                </div> --}}
-
                 <div class="row">
                     <div class="col-md-6">
                         {{-- <p>BranchName::{{$branch->branch_name}}</p> --}}
+                        <p>BranchName::{{$branches->branch_name}}</p>
                     </div>
                 </div>
 

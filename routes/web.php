@@ -37,30 +37,31 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/logout', "LogoutController@logout")->name('logout');
 
         //branch
-        Route::get('/branch', 'BranchController@index')->name('branch.index');
-        Route::post('/create', 'BranchController@create')->name('branch.create');
-        Route::get('/store', "BranchController@store")->name('branch.store');
-        Route::get('/show', 'BranchController@show')->name('branch.show');
-        Route::put('/edit', 'BranchController@edit')->name('branch.edit');
-        Route::get('/update','BranchController@update')->name('branch.update');
-        Route::get('/destory','BranchController@destroy')->name('branch.destory');
+        // Route::get('/branch', 'BranchController@index')->name('branch.index');
+        // Route::post('/create', 'BranchController@create')->name('branch.create');
+        // Route::get('/store', "BranchController@store")->name('branch.store');
+        // Route::get('/show', 'BranchController@show')->name('branch.show');
+        // Route::put('/edit', 'BranchController@edit')->name('branch.edit');
+        // Route::get('/update','BranchController@update')->name('branch.update');
+        // Route::get('/destory','BranchController@destroy')->name('branch.destory');
 
-        // Route::resource('/',EmployeeController::class);
+        Route::resource('/branch',BranchController::class);
 
         //Employee
+        Route::resource('/employee',EmployeeController::class);
 
-        Route::get('/employee', 'EmployeeController@index')->name('employee.index');
+        // Route::get('/employee', 'EmployeeController@index')->name('employee.index');
 
-        Route::get('/create', 'EmployeeController@create')->name('employee.create');
+        // Route::get('/create', 'EmployeeController@create')->name('employee.create');
 
-        Route::get('/store', "EmployeeController@store")->name('employee.store');
+        // Route::get('/store', "EmployeeController@store")->name('employee.store');
 
-        Route::get('/view', 'EmployeeController@show')->name('employee.show');
+        // Route::get('/view', 'EmployeeController@show')->name('employee.show');
 
-        Route::get('/edit', 'EmployeeController@edit')->name('employee.edit');
+        // Route::get('/edit', 'EmployeeController@edit')->name('employee.edit');
 
-        Route::get('/update', 'EmployeeController@update')->name('employee.update');
+        // Route::get('/update', 'EmployeeController@update')->name('employee.update');
 
-        Route::get('/destory', 'EmployeeController@destroy')->name('employee.destory');
+        // Route::post('/destroy', 'EmployeeController@destroy')->name('employee.destroy');
     });
 });

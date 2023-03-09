@@ -25,7 +25,7 @@ class EmployeeController extends Controller
         else{
             $employee=Employee::all();
         }
-        return view('employee.index', ['employees' => $employee]);
+        return view('employee.index', ['employee' => $employee]);
     }
 
     /**
@@ -35,7 +35,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        return view('employee.create',['branches'=>Branch::all()]);
+        // return view('employee.create');
     }
 
     /**
@@ -60,7 +61,7 @@ class EmployeeController extends Controller
      */
     public function show(Employee $employee)
     {
-        return view('employee.view', ['employee' => $employee]);
+        return view('employee.view',['employee'=>$employee,'branches'=>Branch::all()]);
     }
 
     /**
@@ -71,7 +72,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('employee.edit', ['employee' => $employee]);
+        return view('employee.edit',['employee'=>$employee,'branches' => Branch::all()]);
     }
 
     /**
@@ -96,6 +97,8 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        return view('employee.view', ['employee' => $employee]);
+        if ($employee->delete()) {
+            return redirect()->route('employee.index');
+        }
     }
 }

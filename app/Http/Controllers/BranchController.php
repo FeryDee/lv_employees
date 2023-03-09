@@ -51,10 +51,10 @@ class BranchController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Branch $branch)
     {
         // dd( $branch->branch_name );
-        return view('branch.view');
+        return view('branch.view',['branch'=>$branch,'branches'=>Branch::all()]);
     }
 
     /**
@@ -65,8 +65,6 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        //
-        $branch = DB::table('branches')->get();
         return view('branch.edit', ['branch' => $branch]);
     }
 
@@ -94,6 +92,7 @@ class BranchController extends Controller
      */
     public function destroy(Branch $branch)
     {
-        return view('branch.view', ['branch' => $branch]);
-    }
+        if ($branch->delete()) {
+            return redirect()->route('branch.index');
+        }    }
 }

@@ -18,6 +18,7 @@
                     <li><a href="{{ route('employee.index') }}" class="nav-link px-2 text-white">Employees</a></li>
                 @elsecan('isBranchManager')
                     <li><a href="{{ route('branch.index') }}" class="nav-link px-2 text-white">Branches</a></li>
+                    <li><a href="{{ route('employee.index') }}" class="nav-link px-2 text-white">Employees</a></li>
                 {{-- @elsecan('isEmployee')
                     <li><a href="{{ route('branch.index') }}" class="nav-link px-2 text-white">Branches</a></li> --}}
                 @endcan

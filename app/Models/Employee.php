@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
-    protected $fillable=['name'];
+    protected $fillable=['name','branch_id'];
+
+    public function branch(){
+        return $this->belongsTo(Branch::class);
+    }
 }

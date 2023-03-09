@@ -14,40 +14,44 @@
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Branch_id</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <form action="{{ route('employee.index') }}" method="get">
-                    @csrf
-                    @method('delete')
-                    @foreach ($employees as $employee)
+
+                @foreach ($employee as $employee)
+                    <form action="{{ route('employee.destroy', $employee->id) }}" method="post">
+                        @csrf
+                        @method('delete')
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $employee->name }}</td>
-                            <td>{{$employee->branch->branch_name}}</td>
+                            <td>{{ $employee->branch->branch_name }}</td>
                             <td>
                                 @can('isAdmin')
                                     <div class="col-md 12 ms-auto">
-                                        <a href="{{ route('employee.show')}}" class="btn btn-success ">View</a>
-                                        <a href="{{ route('employee.edit')}}" class="btn btn-warning ">Edit</a>
+                                        <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-success ">View</a>
+                                        <a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-warning ">Edit</a>
                                         <button type="submit" class="btn btn-danger">Delete</button>
+
                                     </div>
                                 @elsecan('isManager')
                                     <div class="col-md 12 ms-auto">
-                                        <a href="{{ route('employee.show')}}" class="btn btn-success">View</a>
-                                        <a href="{{ route('employee.edit')}}" class="btn btn-warning">Edit</a>
+                                        <a href="{{ route('employee.show') }}" class="btn btn-success">View</a>
+                                        <a href="{{ route('employee.edit') }}" class="btn btn-warning">Edit</a>
                                     </div>
                                 @elsecan('isBranchManager')
                                     <div class="col-md 12 ms-auto ">
-                                        <a href="{{ route('employee.show')}}" class="btn btn-success ">View</a>
-                                        <a href="{{ route('employee.edit')}}" class="btn btn-warning ">Edit</a>
+                                        <a href="{{ route('employee.show') }}" class="btn btn-success ">View</a>
+                                        <a href="{{ route('employee.edit') }}" class="btn btn-warning ">Edit</a>
                                     </div>
                                 @endcan
                             </td>
                         </tr>
-                    @endforeach
-                </form>
+                    </form>
+                @endforeach
+
             </tbody>
         </table>
     </div>
