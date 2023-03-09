@@ -17,7 +17,7 @@
                     <th scope="col">Branch_id</th>
                 </tr>
             </thead>
-            <tbody>ksdfjaksjfas
+            <tbody>
                 <form action="{{ route('employee.index') }}" method="get">
                     @csrf
                     @method('delete')
